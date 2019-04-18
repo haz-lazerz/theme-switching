@@ -1,6 +1,21 @@
 import React, { Component } from "react";
 import "./App.scss";
 import { Switch } from "@material-ui/core";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = {
+  colorSwitchBase: {
+    color: "#0077ff",
+    "&$colorChecked": {
+      color: "yellow",
+      "& + $colorBar": {
+        backgroundColor: "yellow"
+      }
+    }
+  },
+  colorBar: { backgroundColor: "#0077ff" },
+  colorChecked: {}
+};
 
 class App extends Component {
   state = {
@@ -20,6 +35,7 @@ class App extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <div
         className={
@@ -31,7 +47,14 @@ class App extends Component {
         <div className="container">
           <h1>Light / Dark mode</h1>
           <div className="toggler-container">
-            <Switch onChange={this.handleChange} className="custom" />
+            <Switch
+              classes={{
+                switchBase: classes.colorSwitchBase,
+                checked: classes.colorChecked,
+                bar: classes.colorBar
+              }}
+              onChange={this.handleChange}
+            />
           </div>
           <p>
             Ex do proident sit et tempor proident aliquip fugiat aliquip sint
@@ -50,4 +73,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
