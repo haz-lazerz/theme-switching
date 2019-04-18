@@ -31,7 +31,7 @@ class App extends Component {
     document.documentElement.classList.add("transition");
     window.setTimeout(() => {
       document.documentElement.classList.remove("transition");
-    }, 1000);
+    }, 500);
   };
 
   render() {
@@ -47,6 +47,7 @@ class App extends Component {
         <div className="container">
           <h1>Light / Dark mode</h1>
           <div className="toggler-container">
+            LIGHT
             <Switch
               classes={{
                 switchBase: classes.colorSwitchBase,
@@ -55,6 +56,7 @@ class App extends Component {
               }}
               onChange={this.handleChange}
             />
+            DARK
           </div>
           <p>
             Ex do proident sit et tempor proident aliquip fugiat aliquip sint
