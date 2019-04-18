@@ -2,20 +2,7 @@ import React, { Component } from "react";
 import "./App.scss";
 import { Switch } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-
-const styles = {
-  colorSwitchBase: {
-    color: "#0077ff",
-    "&$colorChecked": {
-      color: "yellow",
-      "& + $colorBar": {
-        backgroundColor: "yellow"
-      }
-    }
-  },
-  colorBar: { backgroundColor: "#0077ff" },
-  colorChecked: {}
-};
+import { switchStyle } from "./componentStyles";
 
 class App extends Component {
   state = {
@@ -23,15 +10,14 @@ class App extends Component {
   };
 
   handleChange = () => {
-    this.testFunc();
-    this.setState({ checked: !this.state.checked });
+    this.setState({ checked: !this.state.checked }, this.testFunc());
   };
 
   testFunc = () => {
     document.documentElement.classList.add("transition");
     window.setTimeout(() => {
       document.documentElement.classList.remove("transition");
-    }, 500);
+    }, 300);
   };
 
   render() {
@@ -75,4 +61,4 @@ class App extends Component {
   }
 }
 
-export default withStyles(styles)(App);
+export default withStyles(switchStyle)(App);
